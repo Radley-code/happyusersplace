@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account </title>
+
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body >
+  <div class="createdesign">Create An Account </div><br><br>
+  <div class="content">
+  <p> Please kindly provide the following information</p>
+  <br>
+  <form id="myForm">
+    <label for="name">Name:</label> 
+    <input type="text" id="name" name="name"><br>
+    <span class="error" id="nameError"></span>
+    <br>
+    <label for="Username">UserName:</label>
+    <input type="text" id="UN" name="name"><br>
+    <span class="error" id="UNError"></span>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br>
+    <span class="error" id="emailError"></span>
+    <p>Please Choose your Gender<br>
+     <input type="radio" id="M" name="Gender" value="Male"> Male
+     <input type="radio" id="F" name="Gender" value="female"> Female
+     <br>
+     <span class="error" id="genderError"></span>
+    </p>
+    <p>
+      Select Your Profession: <br>
+      <select size="1" name="profession">
+        <option value="STD"> Student</option><hr>
+         <option value="TD"> Teacher</option><hr>
+          <option value="DOC"> Doctor</option><hr>
+           <option value="TECH"> Technian</option><hr>
+      </select>
+      
+      <hr>
+      <a href="login.html">I have an account already</a><br>
+      <a href="home.html">Go Home</a><br>
+    </p>
+    <input type="submit" onmouseover="this.style.color='green'"
+    onmouseout="this.style.color='blue'" value="SIGNUP">
+    <input  type="reset" onmouseover="this.style.color='green'"
+    onmouseout="this.style.color='blue'">
+  </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("myForm");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const UNInput = document.getElementById("UN");
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const UNError = document.getElementById("UNError");
+    const genderError = document.getElementById("genderError");
+
+    form.addEventListener("submit", (e) => {
+      let isValid = true;
+
+      if (nameInput.value.trim() === "") {
+        nameError.textContent = "Please enter your name.";
+        isValid = false;
+      } else {
+        nameError.textContent = "";
+      }
+      
+      if (UNInput.value.trim() === "") {
+        UNError.textContent = "Please enter your Username.";
+        isValid = false;
+      } else {
+        UNError.textContent = "";
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.textContent = "Please enter a valid email address.";
+        isValid = false;
+      } else {
+        emailError.textContent = "";
+      }
+
+      // Gender (radio) validation
+      const genderRadios = document.getElementsByName("Gender");
+      let genderSelected = false;
+      for (let i = 0; i < genderRadios.length; i++) {
+        if (genderRadios[i].checked) {
+          genderSelected = true;
+          break;
+        }
+      }
+      if (!genderSelected) {
+        genderError.textContent = "Please select your gender.";
+        isValid = false;
+      } else {
+        genderError.textContent = "";
+      }
+
+      if (!isValid) {
+        e.preventDefault();
+      }
+    }); 
+    
+    function PreRestProc(myform){
+      if (confirm("Are you sure you want to clear the form ?"))
+    {
+      myform.name.focus();
+      return (true);
+    }
+    else{
+      myform.name.focus();
+      return(false);
+    }
+    }
+    </script>
+</body>
+</html>
