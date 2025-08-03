@@ -29,9 +29,10 @@ Contributions are welcome! Feel free to fork the repository and submit pull requ
 
 License
 
-This project does not currently have a license. Make sure to add one if you plan to share or use this project in other contexts.
+
 
 Acknowledgment
 
 Created by [Radley](https://github.com/Radley-code)
+
 
