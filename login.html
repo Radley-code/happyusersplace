@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login </title>
-
+  <title>Form</title>
   <style>
     .error {
       color: red;
@@ -12,57 +9,57 @@
   </style>
   <link rel="stylesheet" href="style.css">
 </head>
-<body >
-  
-  <div class="createdesign">Log Into Account </div>
+<body>
+  <div class="createdesign"><h1>LOGIN FORM</h1></div> 
   <div class="content">
-  <p> Please kindly provide the following information</p>
-  <br>
   <form id="myForm">
-    <label for="Username">UserName:</label>
-    <input type="text" id="UN" name="name"><br>
-    <span class="error" id="UNError"></span>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+    <span class="error" id="nameError"></span>
     <br>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email"><br>
     <span class="error" id="emailError"></span>
-    <p>
-      
-      <hr>
-      <a href="createacc.html">I don't have an account!</a><br><br>
-      <a href="home.html">Go Home</a><br>
-    </p>
+    <hr>
+    <a href= "createacc.html"> Click here to create account </a> <br>
+    <a href="home.html">Go Home</a><br><br>
     <input type="submit" onmouseover="this.style.color='green'"
-    onmouseout="this.style.color='blue'" value="SIGNUP">
+    onmouseout="this.style.color='blue'" value="LOGIN">
     <input  type="reset" onmouseover="this.style.color='green'"
     onmouseout="this.style.color='blue'">
+    </div>
   </form>
-  </div>
+
   <script>
-    const form = document.getElementById("myForm")
-    const UNInput = document.getElementById("UN");
+    const form = document.getElementById("myForm");
+    const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
+    const nameError = document.getElementById("nameError");
     const emailError = document.getElementById("emailError");
-    const UNError = document.getElementById("UNError");
-    console.log(UNInput);// DEBUGGING
-    console.log(emailInput);
+
     form.addEventListener("submit", (e) => {
-        let isvalid = true;
-        if (UNInput.value.trim() === ""){
-            UNError.textContent = "Please enter your User Name"
-            isvalid = false;
-            e.preventDefault();
-        }else{
-            UNError.textContent = ""
-        }
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      let isValid = true;
+
+      if (nameInput.value.trim() === "") {
+        nameError.textContent = "Please enter your name.";
+        isValid = false;
+      } else {
+        nameError.textContent = "";
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (!emailRegex.test(emailInput.value.trim())) {
         emailError.textContent = "Please enter a valid email address.";
         isValid = false;
       } else {
         emailError.textContent = "";
       }
-    })
+
+      if (!isValid) {
+        e.preventDefault();
+      
+      }
+    });
   </script>
 </body>
 </html>
