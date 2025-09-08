@@ -30,36 +30,6 @@
     </div>
   </form>
 
-  <script>
-    const form = document.getElementById("myForm");
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const nameError = document.getElementById("nameError");
-    const emailError = document.getElementById("emailError");
-
-    form.addEventListener("submit", (e) => {
-      let isValid = true;
-
-      if (nameInput.value.trim() === "") {
-        nameError.textContent = "Please enter your name.";
-        isValid = false;
-      } else {
-        nameError.textContent = "";
-      }
-
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
-        emailError.textContent = "Please enter a valid email address.";
-        isValid = false;
-      } else {
-        emailError.textContent = "";
-      }
-
-      if (!isValid) {
-        e.preventDefault();
-      
-      }
-    });
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>
